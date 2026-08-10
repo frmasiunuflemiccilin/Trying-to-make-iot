@@ -30,7 +30,7 @@
         // Di sini skrip bisa diarahkan untuk mengambil data (bisa dari IP lokal ESP32 atau dari Google Sheets JSON)
         function ambilData() {
             // Contoh jika mengambil dari endpoint data
-            fetch('https://script.google.com/macros/s/AKfycbzj1_xr7x4E-Adiv44guSMuM_oJgOltW1N38w2YKf2yr5KXelGzjDT2ccQ-JoQHaQaDug/exec') 
+            fetch('https://script.google.com/macros/s/AKfycbz4LVPwCjbi9KoN4OM1YisP33najfcuqFWkH8dYRF83xZd00whl4hXkDt2ZRv6cTqBX/exec') 
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('temp').innerText = data.temperature;
