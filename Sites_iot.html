@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Dashboard - Ahmad</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background: #0f172a; color: #f8fafc; padding-top: 50px; }
+        .card { background: #1e293b; padding: 30px; border-radius: 20px; display: inline-block; box-shadow: 0 10px 25px rgba(0,0,0,0.5); width: 85%; max-width: 350px; border: 1px solid #334155; }
+        h2 { color: #38bdf8; margin-bottom: 20px; }
+        .metric { background: #0f172a; margin: 15px 0; padding: 15px; border-radius: 12px; border: 1px solid #334155; }
+        .label { font-size: 14px; color: #94a3b8; }
+        .value { font-size: 32px; font-weight: bold; color: #f1f5f9; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Monitoring Ruangan</h2>
+        <div class="metric">
+            <div class="label">SUHU UDARA</div>
+            <div class="value"><span id="temp">--</span> &deg;C</div>
+        </div>
+        <div class="metric">
+            <div class="label">KELEMBAPAN</div>
+            <div class="value"><span id="hum">--</span> %</div>
+        </div>
+    </div>
+
+    <script>
+        // Di sini skrip bisa diarahkan untuk mengambil data (bisa dari IP lokal ESP32 atau dari Google Sheets JSON)
+        function ambilData() {
+            // Contoh jika mengambil dari endpoint data
+            fetch('https://script.google.com/macros/s/URL_WEB_APP_GOOGLE_SHEETS_KAMU/exec') 
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('temp').innerText = data.temperature;
+                    document.getElementById('hum').innerText = data.humidity;
+                })
+                .catch(err => console.log('Gagal ambil data'));
+        }
+        setInterval(ambilData, 5000); // Update tiap 5 detik
+        ambilData();
+    </script>
+</body>
+</html>
