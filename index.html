@@ -26,15 +26,14 @@
         </div>
     </div>
 
-    <script>
-        // Di sini skrip bisa diarahkan untuk mengambil data (bisa dari IP lokal ESP32 atau dari Google Sheets JSON)
+        <script>
         function ambilData() {
-            // Contoh jika mengambil dari endpoint data
             fetch('https://script.google.com/macros/s/AKfycbz4LVPwCjbi9KoN4OM1YisP33najfcuqFWkH8dYRF83xZd00whl4hXkDt2ZRv6cTqBX/exec') 
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('temp').innerText = data.temperature;
-                    document.getElementById('hum').innerText = data.humidity;
+                    // Diubah menyesuaikan properti dari Google Apps Script: data.suhu dan data.lembap
+                    document.getElementById('temp').innerText = data.suhu;
+                    document.getElementById('hum').innerText = data.lembap;
                 })
                 .catch(err => console.log('Gagal ambil data'));
         }
